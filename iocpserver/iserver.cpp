@@ -176,7 +176,7 @@ bool IServer::InitListenSocket()
 
 	// 将监听socket绑定到完成端口中
 	if (NULL == ::CreateIoCompletionPort(
-		(HANDLE)m_pListenSocketContext->connSocket, m_completionPort, (DWORD)m_pListenSocketContext, 0))
+		(HANDLE)m_pListenSocketContext->connSocket, m_completionPort, (ULONG_PTR)m_pListenSocketContext, 0))
 	{
 		::closesocket(m_pListenSocketContext->connSocket);
 		m_pListenSocketContext->connSocket = INVALID_SOCKET;
@@ -370,7 +370,7 @@ bool IServer::DoAccpet(IOSocketContext *pSocketContext, IOOverlappedContext *pOv
 	if (NULL == ::CreateIoCompletionPort(
 		(HANDLE)pNewSockContext->connSocket,
 		m_completionPort,
-		(DWORD)pNewSockContext,
+		(ULONG_PTR)pNewSockContext,
 		0
 	))
 	{
@@ -473,7 +473,7 @@ DWORD WINAPI IServer::WorkerThreadProc(LPVOID lpParam)
 			INFINITE
 		);
 
-		if (EXIT_SERVER_CODE == (DWORD)pSocketContext)
+		if (EXIT_SERVER_CODE == (ULONG_PTR)pSocketContext)
 		{
 			break;
 		}

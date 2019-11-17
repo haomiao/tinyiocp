@@ -47,12 +47,12 @@ int main()
 	ConcreteClient client;
 	client.Connect("127.0.0.1", 9988);
 	std::string strMsg1 = "Hello Server1!";
-	client.Send(strMsg1.c_str(), strMsg1.length());
+	client.Send(strMsg1.c_str(), (int)strMsg1.length());
 
 	::Sleep(1000);
 
 	std::string strMsg2 = "Hello Server2!";
-	client.Send(strMsg2.c_str(), strMsg2.length());
+	client.Send(strMsg2.c_str(), (int)strMsg2.length());
 
 	::Sleep(1000);
 

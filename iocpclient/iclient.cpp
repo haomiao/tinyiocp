@@ -191,7 +191,7 @@ bool IClient::InitConnectSocket()
 
 	// 将socket绑定到完成端口中
 	if (NULL == ::CreateIoCompletionPort(
-		(HANDLE)m_pSocketContext->connSocket, m_completionPort, (DWORD)m_pSocketContext, 0))
+		(HANDLE)m_pSocketContext->connSocket, m_completionPort, (ULONG_PTR)m_pSocketContext, 0))
 	{
 		::closesocket(m_pSocketContext->connSocket);
 		m_pSocketContext->connSocket = INVALID_SOCKET;
@@ -332,7 +332,7 @@ DWORD WINAPI IClient::WorkerThreadProc(LPVOID lpParam)
 			INFINITE
 		);
 
-		if (EXIT_SERVER_CODE == (DWORD)pSocketContext)
+		if (EXIT_SERVER_CODE == (ULONG_PTR)pSocketContext)
 		{
 			break;
 		}
