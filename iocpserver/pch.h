@@ -1,0 +1,6 @@
+﻿#ifndef _TINY_IOCP_IOCPSERVER_PCH_H_
+#define _TINY_IOCP_IOCPSERVER_PCH_H_
+
+// TODO: 添加要在此处预编译的标头
+
+#endif	// _TINY_IOCP_IOCPSERVER_PCH_H_
